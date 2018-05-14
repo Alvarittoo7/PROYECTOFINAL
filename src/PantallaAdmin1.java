@@ -22,10 +22,10 @@ import javax.swing.JTextField;
 public class PantallaAdmin1 {
 
 	public JFrame frame;
-	private JTable table;
-	private DefaultTableModel TablaDatos;
+	public JTable table;
+	public DefaultTableModel TablaDatos;
 	private JScrollPane scrollpane;
-	private ConexionBBDD conexion;
+	public ConexionBBDD conexion;
 
 
 	
@@ -35,6 +35,7 @@ public class PantallaAdmin1 {
 	 */
 	public PantallaAdmin1() {
 		initialize();
+		conexion = new ConexionBBDD();
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class PantallaAdmin1 {
 		JButton btnListarproductos = new JButton("ListarProductos");
 		
 		btnListarproductos.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton listar productos.png"));
-		btnListarproductos.setBounds(10, 41, 245, 104);
+		btnListarproductos.setBounds(10, 41, 245, 64);
 		frame.getContentPane().add(btnListarproductos);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -112,6 +113,7 @@ public class PantallaAdmin1 {
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(Color.GREEN);
 		btnCancelar.setForeground(Color.RED);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -121,22 +123,31 @@ public class PantallaAdmin1 {
 		btnCancelar.setBounds(10, 314, 229, 49);
 		frame.getContentPane().add(btnCancelar);
 		
+		
+		
 		JButton btnAadir = new JButton("A\u00F1adir");
+		btnAadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaAdmin1Añadir PanAñadir=new PantallaAdmin1Añadir();
+				PanAñadir.frame.setVisible(true);
+				TablaDatos = conexion.ConsultaTablaProductos();
+				table.setModel(TablaDatos);
+			}
+		});
 		btnAadir.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton a\u00F1adir productos.jpg"));
-		btnAadir.setBounds(10, 168, 245, 110);
+		btnAadir.setBounds(10, 115, 245, 64);
 		frame.getContentPane().add(btnAadir);
 		
 		JLabel lblSiUstedDesea = new JLabel("Si usted desea editar un producto\r\n pulse sobre \u00E9l");
 		lblSiUstedDesea.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblSiUstedDesea.setBounds(353, 289, 530, 87);
 		frame.getContentPane().add(lblSiUstedDesea);
-		TablaDatos = new DefaultTableModel();
 		
+	
+	
 		btnListarproductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ConexionBBDD Prueba = new ConexionBBDD();
-				
-				TablaDatos = Prueba.ConsultaTablaProductos();
+				TablaDatos = conexion.ConsultaTablaProductos();
 				table.setModel(TablaDatos);
 			}
 		});

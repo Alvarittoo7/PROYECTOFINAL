@@ -87,6 +87,7 @@ public class Login extends JFrame{
 		frmResgistro.getContentPane().add(lblIniciarSesion);
 		
 		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.setBackground(Color.GREEN);
 		btnEnviar.setForeground(Color.RED);
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,6 +117,7 @@ public class Login extends JFrame{
 		frmResgistro.getContentPane().add(btnEnviar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(Color.GREEN);
 		btnCancelar.setForeground(Color.RED);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

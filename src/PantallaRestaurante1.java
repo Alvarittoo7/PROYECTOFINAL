@@ -53,6 +53,7 @@ public class PantallaRestaurante1 {
 		frame.getContentPane().add(btnUsuarioExistente);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(Color.GREEN);
 		btnCancelar.setForeground(Color.RED);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

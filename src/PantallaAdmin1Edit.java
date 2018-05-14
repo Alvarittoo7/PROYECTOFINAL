@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.Color;
 
 public class PantallaAdmin1Edit {
 
@@ -18,6 +19,11 @@ public class PantallaAdmin1Edit {
 	private JTextField textField_2;
 	private Producto p;
 	private PantallaAdmin1 PantallaAdmin1;
+	static String Cod_producto;
+	static String Cod_categoria;
+	static String Nombre;
+	static Double Precio;
+	static Integer Stock;
 	ConexionBBDD conexion;
 
 	
@@ -26,7 +32,7 @@ public class PantallaAdmin1Edit {
 	public PantallaAdmin1Edit(Producto p) {
 		
 		this.p = p;
-		//this.PantallaAdmin1 = pantallaAdmin1;
+		
 		initialize();
 	}
 
@@ -36,12 +42,16 @@ public class PantallaAdmin1Edit {
 	 * @wbp.parser.entryPoint
 	 */
 	public void initialize() {
+		conexion=new ConexionBBDD();
+		
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.YELLOW);
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.YELLOW);
 		panel.setBounds(10, 11, 414, 239);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -81,28 +91,22 @@ public class PantallaAdmin1Edit {
 		
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(113, 110, 123, 30);
+		textField_3.setBounds(92, 115, 123, 20);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		textField_3.setText(p.getNombre());
 		textField_3.setEditable(false);
 		
 		JButton btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(269, 55, 89, 43);
+		btnActualizar.setBackground(Color.GREEN);
+		btnActualizar.setForeground(Color.RED);
+		btnActualizar.setBounds(253, 44, 89, 57);
 		panel.add(btnActualizar);
 		btnActualizar.addActionListener(new Escuchador() {
-			
-		});
+		
+			});
 
 		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PantallaAdmin1.frame.dispose();
-			}
-		});
-		btnCancelar.setBounds(269, 157, 89, 46);
-		panel.add(btnCancelar);
 		
 		textField_1 = new JTextField();
 		textField_1.setBounds(125, 41, 86, 20);
@@ -123,16 +127,30 @@ public class PantallaAdmin1Edit {
 		panel.add(lblEdicinProducto);
 		
 		JButton btnBorrarPrecioY = new JButton("Borrar Precio y Stock");
+		btnBorrarPrecioY.setBackground(Color.GREEN);
+		btnBorrarPrecioY.setForeground(Color.RED);
 		btnBorrarPrecioY.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField_4.setText("");
 				textField_5.setText("");
+				
 
 				
 			}
 		});
-		btnBorrarPrecioY.setBounds(255, 112, 133, 27);
+		btnBorrarPrecioY.setBounds(236, 112, 133, 27);
 		panel.add(btnBorrarPrecioY);
+		
+		JButton btnEliminarProducto = new JButton("Eliminar Producto");
+		btnEliminarProducto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				conexion.EliminarProducto(p);
+			}
+		});
+		btnEliminarProducto.setBackground(Color.GREEN);
+		btnEliminarProducto.setForeground(Color.RED);
+		btnEliminarProducto.setBounds(209, 164, 181, 47);
+		panel.add(btnEliminarProducto);
 		
 		}
 	
@@ -141,7 +159,7 @@ public class PantallaAdmin1Edit {
 		public void actionPerformed(ActionEvent e) {
 			//Esto sirve para grabar los datos, que actúa como actualizador
 			Double newPrecio =Double.valueOf(textField_4.getText());
-			ConexionBBDD conexion = new ConexionBBDD();
+		
 			if(newPrecio != null && !newPrecio.equals(p.getPrecio())) {
 				p.setPrecio(newPrecio);
 				conexion.ActualizarProducto(p);
@@ -150,8 +168,10 @@ public class PantallaAdmin1Edit {
 			if(newStock !=null && !newStock.equals(p.getStock())) {
 				p.setStock(newStock);
 				conexion.ActualizarProducto(p);
+				
+				
 			}
-			PantallaAdmin1.setVisible(true);
+		Producto p=new Producto(Cod_producto,Cod_categoria,Nombre,newPrecio,newStock);
 		}
 	}
 	

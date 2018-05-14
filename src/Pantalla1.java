@@ -61,6 +61,7 @@ public class Pantalla1 extends JFrame{
 		frame.getContentPane().add(btnRestaurante);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(Color.GREEN);
 		btnCancelar.setForeground(Color.RED);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

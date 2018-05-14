@@ -1,11 +1,11 @@
 
 public class Producto {
 
-	private String Cod_producto;
-	private String Cod_categoria;
-	private String nombre;
-	private double precio;
-	private int Stock;
+	 String Cod_producto;
+	 String Cod_categoria;
+     String nombre;
+	 Double precio;
+	 Integer Stock;
 
 	public Producto(String cod_producto, String cod_categoria, String nombre, double precio, int stock) {
 		super();
