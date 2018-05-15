@@ -55,7 +55,7 @@ public class Login extends JFrame{
 	 */
 	private void initialize() {
 		frmResgistro = new JFrame();
-		frmResgistro.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\DAW1\\Desktop\\fondo restaurante.jpg"));
+		frmResgistro.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/Carpeta/fondo restaurante.jpg")));
 		frmResgistro.setTitle("Resgistro");
 		frmResgistro.getContentPane().setBackground(Color.YELLOW);
 		frmResgistro.setBounds(100, 100, 388, 300);

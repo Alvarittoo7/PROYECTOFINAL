@@ -107,7 +107,7 @@ public class PantallaRestauranteNuevoUsuario {
 		frame.getContentPane().add(btnCancelar);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton a\u00F1adir productos.jpg"));
+		btnNewButton.setIcon(new ImageIcon(PantallaRestauranteNuevoUsuario.class.getResource("/Carpeta/boton a\u00F1adir productos.jpg")));
 		btnNewButton.setBounds(10, 214, 175, 103);
 		frame.getContentPane().add(btnNewButton);
 		

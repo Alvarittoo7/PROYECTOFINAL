@@ -57,8 +57,8 @@ public class PantallaAdmin1 {
 		
 		JButton btnListarproductos = new JButton("ListarProductos");
 		
-		btnListarproductos.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton listar productos.png"));
-		btnListarproductos.setBounds(10, 41, 245, 64);
+		btnListarproductos.setIcon(new ImageIcon(PantallaAdmin1.class.getResource("/Carpeta/boton listar productos.png")));
+		btnListarproductos.setBounds(10, 41, 245, 106);
 		frame.getContentPane().add(btnListarproductos);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -134,8 +134,8 @@ public class PantallaAdmin1 {
 				table.setModel(TablaDatos);
 			}
 		});
-		btnAadir.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton a\u00F1adir productos.jpg"));
-		btnAadir.setBounds(10, 115, 245, 64);
+		btnAadir.setIcon(new ImageIcon(PantallaAdmin1.class.getResource("/Carpeta/boton a\u00F1adir productos.jpg")));
+		btnAadir.setBounds(10, 172, 245, 106);
 		frame.getContentPane().add(btnAadir);
 		
 		JLabel lblSiUstedDesea = new JLabel("Si usted desea editar un producto\r\n pulse sobre \u00E9l");

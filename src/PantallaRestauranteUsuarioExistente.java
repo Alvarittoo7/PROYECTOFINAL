@@ -70,7 +70,7 @@ public class PantallaRestauranteUsuarioExistente {
 		scrollPane.setViewportView(table);
 		
 		JButton btnAadir = new JButton("");
-		btnAadir.setIcon(new ImageIcon("C:\\Users\\DAW1\\Desktop\\botones proyecto final\\boton a\u00F1adir productos.jpg"));
+		btnAadir.setIcon(new ImageIcon(PantallaRestauranteUsuarioExistente.class.getResource("/Carpeta/boton a\u00F1adir productos.jpg")));
 		btnAadir.setBounds(320, 110, 153, 117);
 		frame.getContentPane().add(btnAadir);
 		

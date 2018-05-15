@@ -12,7 +12,7 @@ public class ConexionBBDD {
 
 	private String bd;
 	private String url= "jdbc:oracle:thin:@localhost:1521:XE";
-	private String usr = "ALBERTO";
+	private String usr = "alberto98";
 	private String pwd = "alberto1234";
 	public Connection conexion;
 	
@@ -41,7 +41,7 @@ public class ConexionBBDD {
 		String [] columnas={"Cod_Producto","Cod_Categoria","Nombre","Precio","Stock"};
 		String [] registro=new String[5];
 		DefaultTableModel ModeloTabla = new DefaultTableModel(null,columnas);
-		String query = "SELECT * FROM ALBERTO.PRODUCTOS";
+		String query = "SELECT * FROM alberto98.PRODUCTOS";
 		 
 		try {
 			Statement stmt = conexion.createStatement();
@@ -71,7 +71,7 @@ public class ConexionBBDD {
 		Integer Stock = p.getStock();
 		int resultado = 0;
 		
-		String query = "UPDATE ALBERTO.productos SET precio= " + Precio + " ,  stock= " + Stock + " WHERE cod_producto= " + Cod_producto;
+		String query = "UPDATE alberto98.productos SET precio= " + Precio + " ,  stock= " + Stock + " WHERE cod_producto= " + Cod_producto;
 		System.out.println(query);
 		try {
 			Statement stmt = conexion.createStatement();
@@ -88,7 +88,7 @@ public class ConexionBBDD {
 		
 		int resultado = 0;
 		
-		String query = "INSERT INTO ALBERTO.productos VALUES('"+p.Cod_producto+"' , '"+p.Cod_categoria+"' , '"+p.nombre+"' , "+p.precio+" , "+p.Stock+")";
+		String query = "INSERT INTO alberto98.productos VALUES('"+p.Cod_producto+"' , '"+p.Cod_categoria+"' , '"+p.nombre+"' , "+p.precio+" , "+p.Stock+")";
 	
 		try {
 			Statement stmt = conexion.createStatement();
@@ -105,7 +105,7 @@ public int EliminarProducto(Producto p) {
 		
 		int resultado = 0;
 		
-		String query = "DELETE FROM ALBERTO.productos  WHERE  cod_producto= "+ Cod_producto;
+		String query = "DELETE FROM alberto98.productos  WHERE  cod_producto= "+ Cod_producto;
 	
 		try {
 			Statement stmt = conexion.createStatement();
