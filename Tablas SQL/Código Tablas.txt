@@ -28,7 +28,7 @@ DROP TABLE Contiene CASCADE CONSTRAINTS;
 
 CREATE TABLE Contiene (Cod_Producto VARCHAR(255), Cod_Pedido VARCHAR(255),
     Cantidad NUMBER(9),
-    FOREIGN KEY (Cod_Producto) REFERENCES Productos (Cod_Producto), 
+    FOREIGN KEY (Cod_Producto) REFERENCES Productos (Cod_Producto) ON DELETE ON, 
     FOREIGN KEY (Cod_Pedido) REFERENCES Pedidos (Cod_Pedido));
 
 DROP TABLE Mesa CASCADE CONSTRAINTS;
