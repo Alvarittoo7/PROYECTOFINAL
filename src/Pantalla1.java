@@ -1,13 +1,7 @@
-import java.awt.EventQueue;
-import java.awt.HeadlessException;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 

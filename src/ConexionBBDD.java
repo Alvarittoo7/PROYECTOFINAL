@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 
 public class ConexionBBDD {
 
-	private String bd;
 	private String url= "jdbc:oracle:thin:@localhost:1521:XE";
 	private String usr = "CONSOLIDACION";
 	private String pwd = "lorca";
