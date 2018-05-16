@@ -38,8 +38,8 @@ public class PantallaAdmin1Añadir {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		   Producto p=new Producto(null,null,null,0,0);
-	       conexion=new ConexionBBDD();
+		   Producto p = new Producto(null,null,null,0,0);
+	       conexion = new ConexionBBDD();
 		
 		
 		frame = new JFrame();

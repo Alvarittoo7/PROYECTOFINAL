@@ -1,22 +1,24 @@
 import java.sql.Connection;
+import java.io.*;
+import java.util.Properties;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
 import javax.swing.table.DefaultTableModel;
 
 public class ConexionBBDD {
 
-	private String url= "jdbc:oracle:thin:@localhost:1521:XE";
-	private String usr = "CONSOLIDACION";
-	private String pwd = "lorca";
+	private String url;
+	private String usr;
+	private String pwd;
+	private String esquema;
 	public Connection conexion;
 	
 
 	public ConexionBBDD()  {
+		
+		FicheroINI();
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -40,7 +42,7 @@ public class ConexionBBDD {
 		String [] columnas={"Cod_Producto","Cod_Categoria","Nombre","Precio","Stock"};
 		String [] registro=new String[5];
 		DefaultTableModel ModeloTabla = new DefaultTableModel(null,columnas);
-		String query = "SELECT * FROM CONSOLIDACION.PRODUCTOS";
+		String query = "SELECT * FROM "+ esquema +".PRODUCTOS";
 		 
 		try {
 			Statement stmt = conexion.createStatement();
@@ -64,13 +66,11 @@ public class ConexionBBDD {
 	
 	public int ActualizarProducto(Producto p) {
 		String Cod_producto = p.getCod_producto();
-		String Cod_categoria = p.getCod_categoria();
-		String Nombre = p.getNombre();
 		Double Precio = p.getPrecio();
 		Integer Stock = p.getStock();
 		int resultado = 0;
 		
-		String query = "UPDATE CONSOLIDACION.productos SET precio= " + Precio + " ,  stock= " + Stock + " WHERE cod_producto= " + Cod_producto;
+		String query = "UPDATE "+ esquema +".productos SET precio= " + Precio + " ,  stock= " + Stock + " WHERE cod_producto= " + Cod_producto;
 		try {
 			Statement stmt = conexion.createStatement();
 			resultado = stmt.executeUpdate(query);
@@ -86,7 +86,7 @@ public class ConexionBBDD {
 		
 		int resultado = 0;
 		
-		String query = "INSERT INTO CONSOLIDACION.productos VALUES('"+p.Cod_producto+"' , '"+p.Cod_categoria+"' , '"+p.nombre+"' , "+p.precio+" , "+p.Stock+")";
+		String query = "INSERT INTO "+ esquema +".productos VALUES('"+p.Cod_producto+"' , '"+p.Cod_categoria+"' , '"+p.nombre+"' , "+p.precio+" , "+p.Stock+")";
 	
 		try {
 			Statement stmt = conexion.createStatement();
@@ -114,4 +114,34 @@ public int EliminarProducto(Producto p) {
 		}
 	return resultado;
 	}
+
+	public void FicheroINI() {
+		Properties propiedades = new Properties();
+		InputStream entrada = null;
+		try {
+			File miFichero = new File("src/configuracion.ini");
+			if(miFichero.exists()) {
+				entrada = new FileInputStream(miFichero);
+				propiedades.load(entrada);
+				url = propiedades.getProperty("basedatos");
+				usr=propiedades.getProperty("usuario");
+				pwd=propiedades.getProperty("clave");
+				esquema=propiedades.getProperty("esquema");
+			}
+			else {
+				System.err.println("fichero no encontrado");
+			}
+		}catch(IOException ex) {
+			ex.printStackTrace();
+		}finally {
+			if(entrada != null) {
+				try {
+					entrada.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }
+

@@ -168,7 +168,7 @@ public class PantallaAdmin1Edit {
 				
 				
 			}
-		Producto p=new Producto(Cod_producto,Cod_categoria,Nombre,newPrecio,newStock);
+		Producto p = new Producto(Cod_producto,Cod_categoria,Nombre,newPrecio,newStock);
 		}
 	}
 	
