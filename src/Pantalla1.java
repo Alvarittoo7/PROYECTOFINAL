@@ -8,7 +8,6 @@ import java.awt.Toolkit;
 public class Pantalla1 extends JFrame{
 
 	public JFrame frame;
-    private JFrame Login;
 
 	
 

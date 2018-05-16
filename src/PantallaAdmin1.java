@@ -19,7 +19,6 @@ public class PantallaAdmin1 {
 	public JFrame frame;
 	public JTable table;
 	public DefaultTableModel TablaDatos;
-	private JScrollPane scrollpane;
 	public ConexionBBDD conexion;
 
 

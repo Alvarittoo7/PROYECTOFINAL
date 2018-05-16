@@ -16,7 +16,6 @@ public class PantallaAdmin1Edit {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private Producto p;
-	private PantallaAdmin1 PantallaAdmin1;
 	static String Cod_producto;
 	static String Cod_categoria;
 	static String Nombre;
