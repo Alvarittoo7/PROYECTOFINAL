@@ -103,7 +103,7 @@ public int EliminarProducto(Producto p) {
 		
 		int resultado = 0;
 		
-		String query = "DELETE FROM CONSOLIDACION.productos  WHERE  cod_producto= "+ Cod_producto;
+		String query = "DELETE FROM "+ esquema +".productos  WHERE  cod_producto= "+ Cod_producto;
 	
 		try {
 			Statement stmt = conexion.createStatement();
